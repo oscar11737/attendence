@@ -1,0 +1,6 @@
+select * from
+attendFellowship_family
+inner join attendFellowship_meetingdate_family on
+attendFellowship_family.id = attendFellowship_meetingdate_family.family_id
+inner join attendFellowship_meetingdate on
+attendFellowship_meetingdate.id = attendFellowship_meetingdate_family.meetingdate_id;
