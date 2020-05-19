@@ -1,6 +1,40 @@
-select * from
+select
+name,
+nAdults,
+nUnder12,
+nAbove12,
+submission_date 
+from
 attendFellowship_family
 inner join attendFellowship_meetingdate_family on
 attendFellowship_family.id = attendFellowship_meetingdate_family.family_id
 inner join attendFellowship_meetingdate on
 attendFellowship_meetingdate.id = attendFellowship_meetingdate_family.meetingdate_id;
+
+select
+submission_date,
+name,
+nAdults,
+nUnder12,
+nAbove12 
+from
+attendFellowship_meetingdate
+inner join attendFellowship_meetingdate_family 
+on attendFellowship_meetingdate.id = attendFellowship_meetingdate_family.meetingdate_id
+inner join attendFellowship_family
+on attendFellowship_family.id = attendFellowship_meetingdate_family.family_id;
+
+create table 'attendence_date' ('submsission_date' date, 'name' text, 'nAdults' int, 'nUnder12' int, nAbove12 int);
+
+insert into 'attendence_date' select
+submission_date,
+name,
+nAdults,
+nUnder12,
+nAbove12 
+from
+attendFellowship_meetingdate
+inner join attendFellowship_meetingdate_family 
+on attendFellowship_meetingdate.id = attendFellowship_meetingdate_family.meetingdate_id
+inner join attendFellowship_family
+on attendFellowship_family.id = attendFellowship_meetingdate_family.family_id;

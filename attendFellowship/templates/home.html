@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{{ max_date }}
 <form action="" method="POST">{% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Submit">
@@ -15,17 +16,10 @@
   {% for family in families %}
   <tr>
     <td> <a href="{% url 'show_up' family.id%}">{{ family.name }}</a></td>
-    {% if family.attendence == today %}
     <td>{{ family.nAdults }}</td>
     <td>{{ family.nUnder12 }}</td>
     <td>{{ family.nAbove12 }}</td>
     <td>{{ family.nMeals }}</td>
-    {% else %}
-    <td>0</td>
-    <td>0</td>
-    <td>0</td>
-    <td>0</td>
-    {% endif %}
   </tr>
   {% endfor %}
 </table>
