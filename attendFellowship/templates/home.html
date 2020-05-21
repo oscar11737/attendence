@@ -15,7 +15,7 @@
   </tr>
   {% for family in families %}
   <tr>
-    <td> <a href="{% url 'show_up' family.id%}">{{ family.name }}</a></td>
+    <td> <a href="{% url 'show_up' family.name%}">{{ family.name }}</a></td>
     <td>{{ family.nAdults }}</td>
     <td>{{ family.nUnder12 }}</td>
     <td>{{ family.nAbove12 }}</td>

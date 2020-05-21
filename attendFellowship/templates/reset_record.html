@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 <h1> Current intermediate record </h1>
-<form action="" method="POST">{% csrf_token %}
-  <label for="your_name">Update: </label>
-  <input id="your_name", type="submit" value="Update current record">
-</form>
-<br>
 <table style="width:100%">
   <tr>
     <th>Record date</th>
@@ -22,6 +17,10 @@
     <td>{{ entry.nUnder12 }}</td>
     <td>{{ entry.nAbove12 }}</td>
   </tr>
+  </table>
+  <br>
+  <form action="" method="POST">{% csrf_token %}
+    <input type="submit" value="Reset current record">
+  </form>
   {% endfor %}
-</table>
 {% endblock %}
