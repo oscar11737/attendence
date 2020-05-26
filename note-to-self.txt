@@ -38,3 +38,11 @@ inner join attendFellowship_meetingdate_family
 on attendFellowship_meetingdate.id = attendFellowship_meetingdate_family.meetingdate_id
 inner join attendFellowship_family
 on attendFellowship_family.id = attendFellowship_meetingdate_family.family_id;
+
+select * from attendFellowship_meetingdate where submission_date =date('2020-01-02');
+
+
+insert into 'attendFellowship_intermediaterecord' (id, submission_date, name, nAdults, nUnder12, nAbove12) select * from attendFellowship_meetingdate where submission_date=date('2020-01-02') inner join attendFellowship_meetingdate_family on attendFellowship_meetingdate.id = attendFellowship_meetingdate_family.meetingdate_id inner join attendFellowship_family on attendFellowship_family.id = attendFellowship_meetingdate_family.family_id;
+
+
+

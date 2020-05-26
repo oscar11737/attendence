@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <h1> Current intermediate record </h1>
+{{ max_date }}
 <form action="" method="POST">{% csrf_token %}
-  <label for="your_name">Update: </label>
-  <input id="your_name", type="submit" value="Update current record">
+  {{ dateForm.as_p }}
+  <input type="submit" value="Update current record">
 </form>
 <br>
 <table style="width:100%">

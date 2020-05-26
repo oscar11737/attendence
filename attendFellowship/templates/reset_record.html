@@ -3,24 +3,22 @@
 <h1> Current intermediate record </h1>
 <table style="width:100%">
   <tr>
-    <th>Record date</th>
     <th>Name</th>
     <th>Adults</th>
     <th>Kid 0-12 yo</th>
     <th>Youth - over 12 yo</th>
   </tr>
-  {% for entry in currentRecord %}
+  {% for entry in families %}
   <tr>
-    <td>{{ entry.submission_date }}</td>
     <td>{{ entry.name }}</td>
     <td>{{ entry.nAdults }}</td>
     <td>{{ entry.nUnder12 }}</td>
     <td>{{ entry.nAbove12 }}</td>
   </tr>
+  {% endfor %}
   </table>
   <br>
   <form action="" method="POST">{% csrf_token %}
     <input type="submit" value="Reset current record">
   </form>
-  {% endfor %}
 {% endblock %}

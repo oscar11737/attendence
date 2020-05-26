@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{{ max_date }}
+<p>Is today {{ max_date }}?</p>
 <form action="" method="POST">{% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Submit">

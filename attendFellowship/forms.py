@@ -3,9 +3,22 @@ from .models import Family
 from .models import MeetingDate
 import datetime
 
-
+def dynamicChoice():
+    family_name=[]
+    final_tuple=[]
+    count=1
+    for family in list(Family.objects.filter(nAdults__gte=1)):
+        family_name.append(family.name)
+    for name in family_name:
+        final_tuple.append((str(count),name))
+        count+=1
+    return final_tuple
 class MeetingDateForm(forms.ModelForm):
+    # print(list(Family.objects.filter(nAdults__gte=1)))
+
+    # print(list(Family.objects.filter(nAdults__gte=1))[0].name)
     submission_date = forms.DateField(widget=forms.SelectDateWidget(), label="Attendence date")
+    family = forms.MultipleChoiceField(choices = dynamicChoice)
     class Meta:
         model = MeetingDate
         fields = {'submission_date', 'family'}
