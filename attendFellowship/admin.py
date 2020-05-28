@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import Family
-from .models import MeetingDate
+from .models import Family, MeetingDate, IntermediateRecord
 
 @admin.register(Family)
 class FamilyAdmin(admin.ModelAdmin):
@@ -11,3 +10,7 @@ class FamilyAdmin(admin.ModelAdmin):
 @admin.register(MeetingDate)
 class MeetingDateAdmin(admin.ModelAdmin):
     list_display = ['submission_date']
+
+@admin.register(IntermediateRecord)
+class IntermediateRecordAdmin(admin.ModelAdmin):
+    list_display = ['submission_date', 'name', 'nAdults', 'nUnder12', 'nAbove12']

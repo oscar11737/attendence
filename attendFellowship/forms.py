@@ -42,4 +42,4 @@ class ShowUpForm(forms.ModelForm):
     nMeals = forms.IntegerField(label='How many will join the dinner(Adult+Youth)')
     class Meta(object):
         model = Family
-        fields = ("nAdults", "nUnder12", "nMeals")
+        fields = ("nAdults", "nUnder12", "nAbove12", "nMeals")

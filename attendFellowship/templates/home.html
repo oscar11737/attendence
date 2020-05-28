@@ -23,6 +23,7 @@
   </tr>
   {% endfor %}
 </table>
+<p>adults: {{ adult_sum }} <br> kids under 12: {{ kids_under12_sum }} <br>youth over 12: {{ youth_over12_sum }} <br>number joining dinner: {{ joining_dinner_sum }} </p>
 <a href="{% url 'new_family' %}">
   <h3>Click here to add your family<h3>
 </a>

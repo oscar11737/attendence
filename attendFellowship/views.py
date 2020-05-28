@@ -3,6 +3,7 @@ from .forms import NewFamilyForm, MeetingDateForm, ShowUpForm, TodayDateForm
 from .models import Family, MeetingDate, IntermediateRecord
 import datetime
 from django.db import connection
+from django.db.models import Sum
 
 sql_s1 = "insert into 'attendFellowship_intermediaterecord' (id, submission_date, name, nAdults, nUnder12, nAbove12) select null, submission_date, name, nAdults, nUnder12, nAbove12 "
 sql_s2 = "from attendFellowship_meetingdate inner join attendFellowship_meetingdate_family "
@@ -17,6 +18,11 @@ def home(request):
     except:
         max_date = "awaiting data"
     families = Family.objects.all()
+    adult_sum = Family.objects.aggregate(Sum('nAdults'))
+    kids_under12_sum = Family.objects.aggregate(Sum('nUnder12'))
+    youth_over12_sum = Family.objects.aggregate(Sum('nAbove12'))
+    joining_dinner_sum = Family.objects.aggregate(Sum('nMeals'))
+    print(dir(adult_sum))
     if request.method == 'POST':
         MeetingDate.objects.all().delete()
         form = TodayDateForm(request.POST)
@@ -27,6 +33,10 @@ def home(request):
     context['max_date'] = max_date
     context['form'] = TodayDateForm()
     context['families'] = families
+    context['adult_sum'] = adult_sum['nAdults__sum']
+    context['kids_under12_sum'] = kids_under12_sum['nUnder12__sum']
+    context['youth_over12_sum'] = youth_over12_sum['nAbove12__sum']
+    context['joining_dinner_sum'] = joining_dinner_sum['nMeals__sum']
     return render(request, 'home.html', context)
 
 def new_family(request):
